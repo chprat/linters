@@ -29,4 +29,6 @@ Docker image tags
 Through GitHub Actions several tagged versions of the Docker image are
 available. The image name is `ghcr.io/chprat/linters`, the available tags are:
 
-- `:<branch>`: built from a branch
+- `:<branch>`: build from a branch
+- :`<date>`: scheduled build at a given date from the default branch
+- `:latest`: most recent build from the default branch
