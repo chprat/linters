@@ -1,0 +1,24 @@
+name: Docker package cleanup
+
+on:
+  push:
+  schedule:
+    - cron: "0 4 * * *"
+
+jobs:
+  cleanup-packages:
+    runs-on: ubuntu-latest
+    # The (restricted) default permissions are only read access for contents,
+    # but we need to write packages also. As all not explicitly stated
+    # permissions are none, we need to add contents: read, too.
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Delete all untagged images
+        uses: actions/delete-package-versions@v4
+        with:
+          package-name: linters
+          package-type: container
+          min-versions-to-keep: 0
+          delete-only-untagged-versions: true
