@@ -17,3 +17,6 @@ hadolint Dockerfile
 
 echo "Running markdownlint"
 mdl ./*.md
+
+echo "Running actionlint"
+"$HOME/.local/bin/actionlint"
