@@ -37,5 +37,11 @@ RUN export "HADOLINT_VERSION=$(curl -s https://api.github.com/repos/hadolint/had
 # install markdownlint
 RUN gem install mdl
 
+# install actionlint
+RUN export "ACTIONLINT_VERSION=$(curl -s https://api.github.com/repos/rhysd/actionlint/releases/latest | grep -Po '"tag_name": "v\K[^"]*')" \
+    && curl -LJR "https://github.com/rhysd/actionlint/releases/download/v$ACTIONLINT_VERSION/actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz" -o actionlint.tar.gz \
+    && tar xf actionlint.tar.gz -C "$HOME/.local/bin" actionlint \
+    && rm actionlint.tar.gz
+
 WORKDIR /code
 ENTRYPOINT [ "/code/lint.sh" ]

@@ -7,6 +7,7 @@ and image eliminates the need to maintain them in each project separately.
 
 These linters are currently included:
 
+- [actionlint](https://github.com/rhysd/actionlint) for GitHub Action workflow files
 - [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker)
   to make sure the files comply to a .editorconfig file
 - [hadolint](https://github.com/hadolint/hadolint) for Dockerfiles
