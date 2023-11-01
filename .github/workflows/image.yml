@@ -90,4 +90,4 @@ jobs:
         run: docker load --input ${{ env.image_export_path }}
 
       - name: Run linters from new image
-        run: docker run --rm -v $(pwd):/code:ro ${{ env.image_name }}:${{ env.testing_tag }}
+        run: docker run --rm -v "$(pwd):/code:ro" ${{ env.image_name }}:${{ env.testing_tag }}
