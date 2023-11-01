@@ -1,7 +1,6 @@
 name: Docker package cleanup
 
 on:
-  push:
   schedule:
     - cron: "0 4 * * *"
 
