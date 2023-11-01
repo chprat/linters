@@ -37,6 +37,8 @@ jobs:
           filtered_image_tags="$(echo "$api_result" | jq -r ".[].metadata.container.tags[]" \
                                   | grep -v "^[0-9]*$\|latest\|main")"
           # iterate over the filtered list of image tags
+          number_of_tags="$(echo "$filtered_image_tags" | wc -l)"
+          echo "$number_of_tags possible tags to delete"
           while IFS= read -r line ; do
             # check if a branch for the tag exists
             echo "$line branch still exists"
