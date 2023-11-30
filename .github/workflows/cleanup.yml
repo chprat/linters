@@ -30,7 +30,6 @@ jobs:
           package-name: linters
           package-type: container
           min-versions-to-keep: 4
-          ignore-versions: '^(?!\d+$).*'
       - name: Delete images from deleted branches
         run: |
           # Get all image tags, API access described at
