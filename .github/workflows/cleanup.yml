@@ -41,7 +41,7 @@ jobs:
                         https://api.github.com/users/chprat/packages/container/linters/versions)"
           # Remove main, latest and all date tags from the list
           filtered_image_tags="$(echo "$api_result" | jq -r ".[].metadata.container.tags[]" \
-                                  | grep -v "^[0-9]*$\|latest\|main")"
+                                  | grep -v "^[0-9]*$\|latest\|main" || true)"
           # iterate over the filtered list of image tags
           number_of_tags="$(echo "$filtered_image_tags" | wc -l)"
           echo "$number_of_tags possible tags to delete"
