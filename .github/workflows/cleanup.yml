@@ -17,19 +17,13 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Delete all untagged images
-        uses: actions/delete-package-versions@v4
-        with:
-          package-name: linters
-          package-type: container
-          min-versions-to-keep: 0
-          delete-only-untagged-versions: true
       - name: Delete old scheduled images
         uses: actions/delete-package-versions@v4
         with:
           package-name: linters
           package-type: container
           min-versions-to-keep: 4
+
       - name: Delete images from deleted branches
         run: |
           # Get all image tags, API access described at
